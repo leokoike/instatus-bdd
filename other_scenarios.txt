@@ -1,0 +1,43 @@
+
+
+Scenario: initialize get_incidents verify_size_list not_empty_list create_new_incident exit_system 
+
+Given initialize
+When get_incidents
+And verify_size_list
+And not_empty_list
+Then notEmptyList
+When create_new_incident
+Then creationSuccess
+When exit_system
+
+
+Scenario: initialize get_incidents verify_size_list empty_list create_new_incident view_incident_details exit_system 
+
+Given initialize
+When get_incidents
+And verify_size_list
+And empty_list
+Then emptyList
+When create_new_incident
+Then creationSuccess
+When view_incident_details
+Then incidentActiveSuccess
+When exit_system
+
+
+Scenario: initialize get_incidents verify_size_list not_empty_list view_incident_details update_an_incident view_incident_details exit_system 
+
+Given initialize
+When get_incidents
+And verify_size_list
+And not_empty_list
+Then notEmptyList
+When view_incident_details
+Then incidentActiveSuccess
+When update_an_incident
+Then updateSuccess
+When view_incident_details
+Then incidentActiveSuccess
+When exit_system
+
