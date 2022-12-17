@@ -54,12 +54,14 @@ def generate_random_string() -> str:
 @given("initialize_not_empty_list")
 def step_given_init_not_empty(context):
     resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+    assert resposta.status_code == 200
     if len(resposta.json()) == 0:
         context.session.post(
             f"{API_URL}/incidents", headers=AUTH, json=generate_post_random_data()
         )
 
         resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+        assert resposta.status_code == 200
 
     context.response = {
         GET_ALL: {
@@ -72,13 +74,16 @@ def step_given_init_not_empty(context):
 @given("initialize_empty_list")
 def step_given_init_empty(context):
     resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+    assert resposta.status_code == 200
     context.response = {}
-    if len(resposta.json()) != 0:
-        for item in resposta:
+    lista_itens = resposta.json()
+    if len(lista_itens) != 0:
+        for item in lista_itens:
             id = item["id"]
             context.session.delete(f"{API_URL}/incidents/{id}", headers=AUTH)
 
         resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+        assert resposta.status_code == 200
 
     context.response = {
         GET_ALL: {
