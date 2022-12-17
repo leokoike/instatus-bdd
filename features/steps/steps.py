@@ -11,6 +11,7 @@ GET_ALL = 1  # guarda a lista de incidents
 GET_ONE = 2  # guarda um incident recuperado
 SAVE = 3  # guarda o incident que foi atualizado/criado
 DELETE = 4  # guarda o incident que foi deletado
+ERROR = 5  # guarda os dados de erro
 
 STATUS = 1  # status code da request
 JSON = 2  # corpo da resposta
@@ -22,7 +23,20 @@ def generate_post_random_data() -> dict:
         "name": generate_random_string(),
         "message": "Este incidente foi adicionado via teste da api",
         "components": ["clal3my5v74030hqocw29ekqla"],
-        # "started": "2022-11-24 10:20:47.998",
+        "started": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+        "status": "INVESTIGATING",
+        "notify": True,
+        "statuses": [{"id": "clal3my5v74030hqocw29ekqla", "status": "OPERATIONAL"}],
+    }
+
+    return data
+
+
+def generate_post_random_data_error() -> dict:
+    data = {
+        "name": generate_random_string(),
+        "message": "Este incidente foi adicionado via teste da api",
+        "components": ["teste"],
         "started": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
         "status": "INVESTIGATING",
         "notify": True,
@@ -36,6 +50,18 @@ def generate_put_random_data() -> dict:
     data = {
         "name": generate_random_string(),
         "components": ["clal3my5v74030hqocw29ekqla"],
+        "status": "INVESTIGATING",
+        "notify": True,
+        "statuses": [{"id": "clal3my5v74030hqocw29ekqla", "status": "OPERATIONAL"}],
+    }
+
+    return data
+
+
+def generate_put_random_data_error() -> dict:
+    data = {
+        "name": generate_random_string(),
+        "components": ["teste"],
         "status": "INVESTIGATING",
         "notify": True,
         "statuses": [{"id": "clal3my5v74030hqocw29ekqla", "status": "OPERATIONAL"}],
@@ -67,6 +93,7 @@ def step_given_init_not_empty(context):
         GET_ALL: {
             STATUS: resposta.status_code,
             JSON: resposta.json(),
+            VAR: len(resposta.json()),
         }
     }
 
@@ -89,6 +116,7 @@ def step_given_init_empty(context):
         GET_ALL: {
             STATUS: resposta.status_code,
             JSON: resposta.json(),
+            VAR: len(resposta.json()),
         }
     }
 
@@ -100,6 +128,7 @@ def step_when_get_all(context):
     context.response[GET_ALL] = {
         STATUS: resposta.status_code,
         JSON: resposta.json(),
+        VAR: len(resposta.json()),
     }
 
 
@@ -110,12 +139,38 @@ def step_when_verify(context):
 
 @when("not_empty_list")
 def step_when_not_empty_list(context):
-    assert context.response[GET_ALL][JSON] is not None
+    if context.response[GET_ALL][VAR] == 0:
+        context.session.post(
+            f"{API_URL}/incidents", headers=AUTH, json=generate_post_random_data()
+        )
+
+        resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+        assert resposta.status_code == 200
+        context.response = {
+            GET_ALL: {
+                STATUS: resposta.status_code,
+                JSON: resposta.json(),
+                VAR: len(resposta.json()),
+            }
+        }
 
 
 @when("empty_list")
 def step_when_empty_list(context):
-    assert context.response[GET_ALL][JSON] is not None
+    if context.response[GET_ALL][VAR] > 0:
+        for item in context.response[GET_ALL][JSON]:
+            id = item["id"]
+            context.session.delete(f"{API_URL}/incidents/{id}", headers=AUTH)
+
+        resposta = context.session.get(f"{API_URL}/incidents", headers=AUTH)
+        assert resposta.status_code == 200
+        context.response = {
+            GET_ALL: {
+                STATUS: resposta.status_code,
+                JSON: resposta.json(),
+                VAR: len(resposta.json()),
+            }
+        }
 
 
 @when("view_created_incident_details")
@@ -157,6 +212,14 @@ def step_when_view_incident(context):
     }
 
 
+@when("view_inexistent_incident")
+def step_when_view_incident(context):
+    incident_id = "teste"
+    resposta = context.session.get(f"{API_URL}/incidents/{incident_id}", headers=AUTH)
+    assert resposta.status_code == 500
+    context.response[ERROR] = {STATUS: resposta.status_code}
+
+
 @when("delete_a_incident_from_list")
 def step_when_delete_from_list(context):
     list_incident = context.response[GET_ALL][JSON]
@@ -186,12 +249,35 @@ def step_when_delete_this_incident(context):
     }
 
 
+@when("delete_inexistent_incident")
+def step_when_error_delete(context):
+    incident_id = "teste"
+    resposta = context.session.delete(
+        f"{API_URL}/incidents/{incident_id}", headers=AUTH
+    )
+    assert resposta.status_code == 500
+    context.response[ERROR] = {STATUS: resposta.status_code}
+
+
 @when("create_new_incident")
 def step_when_create(context):
     data = generate_post_random_data()
 
     resposta = context.session.post(f"{API_URL}/incidents", headers=AUTH, json=data)
     assert resposta.status_code == 200
+    context.response[SAVE] = {
+        STATUS: resposta.status_code,
+        JSON: resposta.json(),
+        VAR: data["name"],
+    }
+
+
+@when("create_incident_with_invalid_parameters")
+def step_when_error_create(context):
+    data = generate_post_random_data_error()
+
+    resposta = context.session.post(f"{API_URL}/incidents", headers=AUTH, json=data)
+    assert resposta.status_code == 500
     context.response[SAVE] = {
         STATUS: resposta.status_code,
         JSON: resposta.json(),
@@ -213,6 +299,34 @@ def step_when_update(context):
         JSON: resposta.json(),
         VAR: data["name"],
     }
+
+
+@when("update_incident_with_invalid_parameters")
+def step_when_error_update(context):
+    incident_id = context.response[GET_ONE][JSON]["id"]
+    data = generate_put_random_data_error()
+
+    resposta = context.session.put(
+        f"{API_URL}/incidents/{incident_id}", headers=AUTH, json=data
+    )
+    assert resposta.status_code == 500
+    context.response[SAVE] = {
+        STATUS: resposta.status_code,
+        JSON: resposta.json(),
+        VAR: data["name"],
+    }
+
+
+@when("update_inexistent_incident")
+def step_when_error_update_not_found(context):
+    incident_id = "teste"
+    data = generate_put_random_data()
+
+    resposta = context.session.put(
+        f"{API_URL}/incidents/{incident_id}", headers=AUTH, json=data
+    )
+    assert resposta.status_code == 500
+    context.response[ERROR] = {STATUS: resposta.status_code}
 
 
 @then("verifyNotEmptyList")
@@ -247,3 +361,18 @@ def step_then_creation_success(context):
 def step_then_update_success(context):
     assert context.response[SAVE][STATUS] == 200
     assert context.response[SAVE][JSON]["name"] == context.response[SAVE][VAR]
+
+
+@then("errorCreateIncident")
+def step_then_error_create(context):
+    assert context.response[SAVE][STATUS] == 500
+
+
+@then("errorUpdateIncident")
+def step_then_error_update(context):
+    assert context.response[SAVE][STATUS] == 500
+
+
+@then("notFoundIncident")
+def step_then_incident_not_found(context):
+    assert context.response[ERROR][STATUS] == 500
