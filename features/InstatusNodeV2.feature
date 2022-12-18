@@ -7,6 +7,13 @@ When view_inexistent_incident
 Then notFoundIncident
 
 
+Scenario: initialize_not_empty_list delete_inexistent_incident  
+
+Given initialize_not_empty_list
+When delete_inexistent_incident
+Then errorDeleteIncident
+
+
 Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  
 
 Given initialize_not_empty_list

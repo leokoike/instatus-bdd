@@ -1,62 +1,67 @@
 Feature: Instatus # features/InstatusNodeV2.feature:1
 
   Scenario: initialize_not_empty_list view_inexistent_incident  # features/InstatusNodeV2.feature:3
-    Given initialize_not_empty_list                             # features/steps/steps.py:80
-    When view_inexistent_incident                               # features/steps/steps.py:215
-    Then notFoundIncident                                       # features/steps/steps.py:376
+    Given initialize_not_empty_list                             # features/steps/steps.py:79
+    When view_inexistent_incident                               # features/steps/steps.py:214
+    Then notFoundIncident                                       # features/steps/steps.py:368
 
-  Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:10
-    Given initialize_not_empty_list                                            # features/steps/steps.py:80
-    When create_incident_with_invalid_parameters                               # features/steps/steps.py:275
-    Then errorCreateIncident                                                   # features/steps/steps.py:366
+  Scenario: initialize_not_empty_list delete_inexistent_incident  # features/InstatusNodeV2.feature:10
+    Given initialize_not_empty_list                               # features/steps/steps.py:79
+    When delete_inexistent_incident                               # features/steps/steps.py:251
+    Then errorDeleteIncident                                      # features/steps/steps.py:363
 
-  Scenario: initialize_not_empty_list view_incident_details update_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:17
-    Given initialize_not_empty_list                                                                  # features/steps/steps.py:80
-    When view_incident_details                                                                       # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                       # features/steps/steps.py:342
-    When update_incident_with_invalid_parameters                                                     # features/steps/steps.py:304
-    Then errorUpdateIncident                                                                         # features/steps/steps.py:371
+  Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:17
+    Given initialize_not_empty_list                                            # features/steps/steps.py:79
+    When create_incident_with_invalid_parameters                               # features/steps/steps.py:274
+    Then errorCreateIncident                                                   # features/steps/steps.py:353
 
-  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list create_new_incident  # features/InstatusNodeV2.feature:26
-    Given initialize_not_empty_list                                                                                            # features/steps/steps.py:80
-    When view_incident_details                                                                                                 # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                 # features/steps/steps.py:342
-    When get_incidents                                                                                                         # features/steps/steps.py:124
-    And verify_size_list                                                                                                       # features/steps/steps.py:135
-    And not_empty_list                                                                                                         # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                    # features/steps/steps.py:332
-    When create_new_incident                                                                                                   # features/steps/steps.py:262
-    Then creationSuccess                                                                                                       # features/steps/steps.py:354
+  Scenario: initialize_not_empty_list view_incident_details update_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:24
+    Given initialize_not_empty_list                                                                  # features/steps/steps.py:79
+    When view_incident_details                                                                       # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                       # features/steps/steps.py:329
+    When update_incident_with_invalid_parameters                                                     # features/steps/steps.py:303
+    Then errorUpdateIncident                                                                         # features/steps/steps.py:358
 
-  Scenario: initialize_not_empty_list create_new_incident view_created_incident_details  # features/InstatusNodeV2.feature:39
-    Given initialize_not_empty_list                                                      # features/steps/steps.py:80
-    When create_new_incident                                                             # features/steps/steps.py:262
-    Then creationSuccess                                                                 # features/steps/steps.py:354
-    When view_created_incident_details                                                   # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                           # features/steps/steps.py:342
+  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list create_new_incident  # features/InstatusNodeV2.feature:33
+    Given initialize_not_empty_list                                                                                            # features/steps/steps.py:79
+    When view_incident_details                                                                                                 # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                 # features/steps/steps.py:329
+    When get_incidents                                                                                                         # features/steps/steps.py:123
+    And verify_size_list                                                                                                       # features/steps/steps.py:134
+    And not_empty_list                                                                                                         # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                    # features/steps/steps.py:319
+    When create_new_incident                                                                                                   # features/steps/steps.py:261
+    Then creationSuccess                                                                                                       # features/steps/steps.py:341
 
-  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details  # features/InstatusNodeV2.feature:48
-    Given initialize_not_empty_list                                                                           # features/steps/steps.py:80
-    When view_incident_details                                                                                # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                # features/steps/steps.py:342
-    When update_an_incident                                                                                   # features/steps/steps.py:288
-    Then updateSuccess                                                                                        # features/steps/steps.py:360
-    When view_updated_incident_details                                                                        # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                # features/steps/steps.py:342
+  Scenario: initialize_not_empty_list create_new_incident view_created_incident_details  # features/InstatusNodeV2.feature:46
+    Given initialize_not_empty_list                                                      # features/steps/steps.py:79
+    When create_new_incident                                                             # features/steps/steps.py:261
+    Then creationSuccess                                                                 # features/steps/steps.py:341
+    When view_created_incident_details                                                   # features/steps/steps.py:175
+    Then incidentActiveSuccess                                                           # features/steps/steps.py:329
 
-  Scenario: initialize_not_empty_list view_incident_details delete_this_incident  # features/InstatusNodeV2.feature:59
-    Given initialize_not_empty_list                                               # features/steps/steps.py:80
-    When view_incident_details                                                    # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                    # features/steps/steps.py:342
-    When delete_this_incident                                                     # features/steps/steps.py:238
-    Then deleteSuccess                                                            # features/steps/steps.py:348
+  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details  # features/InstatusNodeV2.feature:55
+    Given initialize_not_empty_list                                                                           # features/steps/steps.py:79
+    When view_incident_details                                                                                # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                # features/steps/steps.py:329
+    When update_an_incident                                                                                   # features/steps/steps.py:287
+    Then updateSuccess                                                                                        # features/steps/steps.py:347
+    When view_updated_incident_details                                                                        # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                # features/steps/steps.py:329
 
-  Scenario: initialize_empty_list create_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:68
-    Given initialize_empty_list                                            # features/steps/steps.py:101
-    When create_incident_with_invalid_parameters                           # features/steps/steps.py:275
-    Then errorCreateIncident                                               # features/steps/steps.py:366
+  Scenario: initialize_not_empty_list view_incident_details delete_this_incident  # features/InstatusNodeV2.feature:66
+    Given initialize_not_empty_list                                               # features/steps/steps.py:79
+    When view_incident_details                                                    # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                    # features/steps/steps.py:329
+    When delete_this_incident                                                     # features/steps/steps.py:237
+    Then deleteSuccess                                                            # features/steps/steps.py:335
+
+  Scenario: initialize_empty_list create_incident_with_invalid_parameters  # features/InstatusNodeV2.feature:75
+    Given initialize_empty_list                                            # features/steps/steps.py:100
+    When create_incident_with_invalid_parameters                           # features/steps/steps.py:274
+    Then errorCreateIncident                                               # features/steps/steps.py:353
 
 1 feature passed, 0 failed, 0 skipped
-8 scenarios passed, 0 failed, 0 skipped
-40 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 1m12.900s
+9 scenarios passed, 0 failed, 0 skipped
+43 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 3m21.320s

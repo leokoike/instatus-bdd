@@ -123,6 +123,19 @@ When view_inexistent_incident
 Then notFoundIncident
 
 
+Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list delete_inexistent_incident  
+
+Given initialize_not_empty_list
+When view_incident_details
+Then incidentActiveSuccess
+When get_incidents
+And verify_size_list
+And not_empty_list
+Then verifyNotEmptyList
+When delete_inexistent_incident
+Then errorDeleteIncident
+
+
 Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list create_incident_with_invalid_parameters  
 
 Given initialize_not_empty_list
@@ -215,6 +228,13 @@ Scenario: initialize_not_empty_list view_inexistent_incident
 Given initialize_not_empty_list
 When view_inexistent_incident
 Then notFoundIncident
+
+
+Scenario: initialize_not_empty_list delete_inexistent_incident  
+
+Given initialize_not_empty_list
+When delete_inexistent_incident
+Then errorDeleteIncident
 
 
 Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  

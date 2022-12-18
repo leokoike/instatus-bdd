@@ -1,194 +1,223 @@
 Feature: Instatus # features/InstatusEdgePairV2.feature:1
 
   Scenario: initialize_not_empty_list create_new_incident view_created_incident_details update_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:3
-    Given initialize_not_empty_list                                                                                              # features/steps/steps.py:80
-    When create_new_incident                                                                                                     # features/steps/steps.py:262
-    Then creationSuccess                                                                                                         # features/steps/steps.py:354
-    When view_created_incident_details                                                                                           # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                                                                   # features/steps/steps.py:342
-    When update_incident_with_invalid_parameters                                                                                 # features/steps/steps.py:304
-    Then errorUpdateIncident                                                                                                     # features/steps/steps.py:371
+    Given initialize_not_empty_list                                                                                              # features/steps/steps.py:79
+    When create_new_incident                                                                                                     # features/steps/steps.py:261
+    Then creationSuccess                                                                                                         # features/steps/steps.py:341
+    When view_created_incident_details                                                                                           # features/steps/steps.py:175
+    Then incidentActiveSuccess                                                                                                   # features/steps/steps.py:329
+    When update_incident_with_invalid_parameters                                                                                 # features/steps/steps.py:303
+    Then errorUpdateIncident                                                                                                     # features/steps/steps.py:358
 
   Scenario: initialize_empty_list create_new_incident view_created_incident_details get_incidents verify_size_list not_empty_list create_new_incident  # features/InstatusEdgePairV2.feature:14
-    Given initialize_empty_list                                                                                                                        # features/steps/steps.py:101
-    When create_new_incident                                                                                                                           # features/steps/steps.py:262
-    Then creationSuccess                                                                                                                               # features/steps/steps.py:354
-    When view_created_incident_details                                                                                                                 # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                                                                                         # features/steps/steps.py:342
-    When get_incidents                                                                                                                                 # features/steps/steps.py:124
-    And verify_size_list                                                                                                                               # features/steps/steps.py:135
-    And not_empty_list                                                                                                                                 # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                            # features/steps/steps.py:332
-    When create_new_incident                                                                                                                           # features/steps/steps.py:262
-    Then creationSuccess                                                                                                                               # features/steps/steps.py:354
+    Given initialize_empty_list                                                                                                                        # features/steps/steps.py:100
+    When create_new_incident                                                                                                                           # features/steps/steps.py:261
+    Then creationSuccess                                                                                                                               # features/steps/steps.py:341
+    When view_created_incident_details                                                                                                                 # features/steps/steps.py:175
+    Then incidentActiveSuccess                                                                                                                         # features/steps/steps.py:329
+    When get_incidents                                                                                                                                 # features/steps/steps.py:123
+    And verify_size_list                                                                                                                               # features/steps/steps.py:134
+    And not_empty_list                                                                                                                                 # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                            # features/steps/steps.py:319
+    When create_new_incident                                                                                                                           # features/steps/steps.py:261
+    Then creationSuccess                                                                                                                               # features/steps/steps.py:341
 
   Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details get_incidents verify_size_list empty_list create_new_incident view_created_incident_details delete_this_incident  # features/InstatusEdgePairV2.feature:29
-    Given initialize_not_empty_list                                                                                                                                                                                            # features/steps/steps.py:80
-    When view_incident_details                                                                                                                                                                                                 # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:342
-    When update_an_incident                                                                                                                                                                                                    # features/steps/steps.py:288
-    Then updateSuccess                                                                                                                                                                                                         # features/steps/steps.py:360
-    When view_updated_incident_details                                                                                                                                                                                         # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:342
-    When get_incidents                                                                                                                                                                                                         # features/steps/steps.py:124
-    And verify_size_list                                                                                                                                                                                                       # features/steps/steps.py:135
-    And empty_list                                                                                                                                                                                                             # features/steps/steps.py:158
-    Then verifyEmptyList                                                                                                                                                                                                       # features/steps/steps.py:337
-    When create_new_incident                                                                                                                                                                                                   # features/steps/steps.py:262
-    Then creationSuccess                                                                                                                                                                                                       # features/steps/steps.py:354
-    When view_created_incident_details                                                                                                                                                                                         # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:342
-    When delete_this_incident                                                                                                                                                                                                  # features/steps/steps.py:238
-    Then deleteSuccess                                                                                                                                                                                                         # features/steps/steps.py:348
+    Given initialize_not_empty_list                                                                                                                                                                                            # features/steps/steps.py:79
+    When view_incident_details                                                                                                                                                                                                 # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:329
+    When update_an_incident                                                                                                                                                                                                    # features/steps/steps.py:287
+    Then updateSuccess                                                                                                                                                                                                         # features/steps/steps.py:347
+    When view_updated_incident_details                                                                                                                                                                                         # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:329
+    When get_incidents                                                                                                                                                                                                         # features/steps/steps.py:123
+    And verify_size_list                                                                                                                                                                                                       # features/steps/steps.py:134
+    And empty_list                                                                                                                                                                                                             # features/steps/steps.py:157
+    Then verifyEmptyList                                                                                                                                                                                                       # features/steps/steps.py:324
+    When create_new_incident                                                                                                                                                                                                   # features/steps/steps.py:261
+    Then creationSuccess                                                                                                                                                                                                       # features/steps/steps.py:341
+    When view_created_incident_details                                                                                                                                                                                         # features/steps/steps.py:175
+    Then incidentActiveSuccess                                                                                                                                                                                                 # features/steps/steps.py:329
+    When delete_this_incident                                                                                                                                                                                                  # features/steps/steps.py:237
+    Then deleteSuccess                                                                                                                                                                                                         # features/steps/steps.py:335
 
   Scenario: initialize_not_empty_list view_incident_details delete_this_incident get_incidents verify_size_list not_empty_list create_new_incident  # features/InstatusEdgePairV2.feature:50
-    Given initialize_not_empty_list                                                                                                                 # features/steps/steps.py:80
-    When view_incident_details                                                                                                                      # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                      # features/steps/steps.py:342
-    When delete_this_incident                                                                                                                       # features/steps/steps.py:238
-    Then deleteSuccess                                                                                                                              # features/steps/steps.py:348
-    When get_incidents                                                                                                                              # features/steps/steps.py:124
-    And verify_size_list                                                                                                                            # features/steps/steps.py:135
-    And not_empty_list                                                                                                                              # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                         # features/steps/steps.py:332
-    When create_new_incident                                                                                                                        # features/steps/steps.py:262
-    Then creationSuccess                                                                                                                            # features/steps/steps.py:354
+    Given initialize_not_empty_list                                                                                                                 # features/steps/steps.py:79
+    When view_incident_details                                                                                                                      # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                      # features/steps/steps.py:329
+    When delete_this_incident                                                                                                                       # features/steps/steps.py:237
+    Then deleteSuccess                                                                                                                              # features/steps/steps.py:335
+    When get_incidents                                                                                                                              # features/steps/steps.py:123
+    And verify_size_list                                                                                                                            # features/steps/steps.py:134
+    And not_empty_list                                                                                                                              # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                         # features/steps/steps.py:319
+    When create_new_incident                                                                                                                        # features/steps/steps.py:261
+    Then creationSuccess                                                                                                                            # features/steps/steps.py:341
 
   Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list view_incident_details update_an_incident view_updated_incident_details update_an_incident view_updated_incident_details delete_this_incident get_incidents verify_size_list not_empty_list create_new_incident view_created_incident_details update_an_incident  # features/InstatusEdgePairV2.feature:65
-    Given initialize_not_empty_list                                                                                                                                                                                                                                                                                                                                        # features/steps/steps.py:80
-    When view_incident_details                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:342
-    When get_incidents                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:124
-    And verify_size_list                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:135
-    And not_empty_list                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:332
-    When view_incident_details                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:342
-    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:288
-    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:360
-    When view_updated_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:342
-    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:288
-    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:360
-    When view_updated_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:342
-    When delete_this_incident                                                                                                                                                                                                                                                                                                                                              # features/steps/steps.py:238
-    Then deleteSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:348
-    When get_incidents                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:124
-    And verify_size_list                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:135
-    And not_empty_list                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:332
-    When create_new_incident                                                                                                                                                                                                                                                                                                                                               # features/steps/steps.py:262
-    Then creationSuccess                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:354
-    When view_created_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:342
-    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:288
-    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:360
+    Given initialize_not_empty_list                                                                                                                                                                                                                                                                                                                                        # features/steps/steps.py:79
+    When view_incident_details                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:329
+    When get_incidents                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:123
+    And verify_size_list                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:134
+    And not_empty_list                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:319
+    When view_incident_details                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:329
+    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:287
+    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:347
+    When view_updated_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:329
+    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:287
+    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:347
+    When view_updated_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:329
+    When delete_this_incident                                                                                                                                                                                                                                                                                                                                              # features/steps/steps.py:237
+    Then deleteSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:335
+    When get_incidents                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:123
+    And verify_size_list                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:134
+    And not_empty_list                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:319
+    When create_new_incident                                                                                                                                                                                                                                                                                                                                               # features/steps/steps.py:261
+    Then creationSuccess                                                                                                                                                                                                                                                                                                                                                   # features/steps/steps.py:341
+    When view_created_incident_details                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:175
+    Then incidentActiveSuccess                                                                                                                                                                                                                                                                                                                                             # features/steps/steps.py:329
+    When update_an_incident                                                                                                                                                                                                                                                                                                                                                # features/steps/steps.py:287
+    Then updateSuccess                                                                                                                                                                                                                                                                                                                                                     # features/steps/steps.py:347
 
   Scenario: initialize_not_empty_list view_incident_details update_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:98
-    Given initialize_not_empty_list                                                                  # features/steps/steps.py:80
-    When view_incident_details                                                                       # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                       # features/steps/steps.py:342
-    When update_incident_with_invalid_parameters                                                     # features/steps/steps.py:304
-    Then errorUpdateIncident                                                                         # features/steps/steps.py:371
+    Given initialize_not_empty_list                                                                  # features/steps/steps.py:79
+    When view_incident_details                                                                       # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                       # features/steps/steps.py:329
+    When update_incident_with_invalid_parameters                                                     # features/steps/steps.py:303
+    Then errorUpdateIncident                                                                         # features/steps/steps.py:358
 
   Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list delete_a_incident_from_list get_incidents verify_size_list not_empty_list view_inexistent_incident  # features/InstatusEdgePairV2.feature:107
-    Given initialize_not_empty_list                                                                                                                                                                           # features/steps/steps.py:80
-    When view_incident_details                                                                                                                                                                                # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                                                                                # features/steps/steps.py:342
-    When get_incidents                                                                                                                                                                                        # features/steps/steps.py:124
-    And verify_size_list                                                                                                                                                                                      # features/steps/steps.py:135
-    And not_empty_list                                                                                                                                                                                        # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                                                                                   # features/steps/steps.py:332
-    When delete_a_incident_from_list                                                                                                                                                                          # features/steps/steps.py:223
-    Then deleteSuccess                                                                                                                                                                                        # features/steps/steps.py:348
-    When get_incidents                                                                                                                                                                                        # features/steps/steps.py:124
-    And verify_size_list                                                                                                                                                                                      # features/steps/steps.py:135
-    And not_empty_list                                                                                                                                                                                        # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                                                                                   # features/steps/steps.py:332
-    When view_inexistent_incident                                                                                                                                                                             # features/steps/steps.py:215
-    Then notFoundIncident                                                                                                                                                                                     # features/steps/steps.py:376
+    Given initialize_not_empty_list                                                                                                                                                                           # features/steps/steps.py:79
+    When view_incident_details                                                                                                                                                                                # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                                                                                # features/steps/steps.py:329
+    When get_incidents                                                                                                                                                                                        # features/steps/steps.py:123
+    And verify_size_list                                                                                                                                                                                      # features/steps/steps.py:134
+    And not_empty_list                                                                                                                                                                                        # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                                                                                   # features/steps/steps.py:319
+    When delete_a_incident_from_list                                                                                                                                                                          # features/steps/steps.py:222
+    Then deleteSuccess                                                                                                                                                                                        # features/steps/steps.py:335
+    When get_incidents                                                                                                                                                                                        # features/steps/steps.py:123
+    And verify_size_list                                                                                                                                                                                      # features/steps/steps.py:134
+    And not_empty_list                                                                                                                                                                                        # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                                                                                   # features/steps/steps.py:319
+    When view_inexistent_incident                                                                                                                                                                             # features/steps/steps.py:214
+    Then notFoundIncident                                                                                                                                                                                     # features/steps/steps.py:368
 
-  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:126
-    Given initialize_not_empty_list                                                                                                                # features/steps/steps.py:80
-    When view_incident_details                                                                                                                     # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                     # features/steps/steps.py:342
-    When get_incidents                                                                                                                             # features/steps/steps.py:124
-    And verify_size_list                                                                                                                           # features/steps/steps.py:135
-    And not_empty_list                                                                                                                             # features/steps/steps.py:140
-    Then verifyNotEmptyList                                                                                                                        # features/steps/steps.py:332
-    When create_incident_with_invalid_parameters                                                                                                   # features/steps/steps.py:275
-    Then errorCreateIncident                                                                                                                       # features/steps/steps.py:366
+  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list delete_inexistent_incident  # features/InstatusEdgePairV2.feature:126
+    Given initialize_not_empty_list                                                                                                   # features/steps/steps.py:79
+    When view_incident_details                                                                                                        # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                        # features/steps/steps.py:329
+    When get_incidents                                                                                                                # features/steps/steps.py:123
+    And verify_size_list                                                                                                              # features/steps/steps.py:134
+    And not_empty_list                                                                                                                # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                           # features/steps/steps.py:319
+    When delete_inexistent_incident                                                                                                   # features/steps/steps.py:251
+    Then errorDeleteIncident                                                                                                          # features/steps/steps.py:363
 
-  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:139
-    Given initialize_not_empty_list                                                                                                            # features/steps/steps.py:80
-    When view_incident_details                                                                                                                 # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                 # features/steps/steps.py:342
-    When get_incidents                                                                                                                         # features/steps/steps.py:124
-    And verify_size_list                                                                                                                       # features/steps/steps.py:135
-    And empty_list                                                                                                                             # features/steps/steps.py:158
-    Then verifyEmptyList                                                                                                                       # features/steps/steps.py:337
-    When create_incident_with_invalid_parameters                                                                                               # features/steps/steps.py:275
-    Then errorCreateIncident                                                                                                                   # features/steps/steps.py:366
+  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list not_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:139
+    Given initialize_not_empty_list                                                                                                                # features/steps/steps.py:79
+    When view_incident_details                                                                                                                     # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                     # features/steps/steps.py:329
+    When get_incidents                                                                                                                             # features/steps/steps.py:123
+    And verify_size_list                                                                                                                           # features/steps/steps.py:134
+    And not_empty_list                                                                                                                             # features/steps/steps.py:139
+    Then verifyNotEmptyList                                                                                                                        # features/steps/steps.py:319
+    When create_incident_with_invalid_parameters                                                                                                   # features/steps/steps.py:274
+    Then errorCreateIncident                                                                                                                       # features/steps/steps.py:353
 
-  Scenario: initialize_not_empty_list delete_a_incident_from_list  # features/InstatusEdgePairV2.feature:152
-    Given initialize_not_empty_list                                # features/steps/steps.py:80
-    When delete_a_incident_from_list                               # features/steps/steps.py:223
-    Then deleteSuccess                                             # features/steps/steps.py:348
+  Scenario: initialize_not_empty_list view_incident_details get_incidents verify_size_list empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:152
+    Given initialize_not_empty_list                                                                                                            # features/steps/steps.py:79
+    When view_incident_details                                                                                                                 # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                 # features/steps/steps.py:329
+    When get_incidents                                                                                                                         # features/steps/steps.py:123
+    And verify_size_list                                                                                                                       # features/steps/steps.py:134
+    And empty_list                                                                                                                             # features/steps/steps.py:157
+    Then verifyEmptyList                                                                                                                       # features/steps/steps.py:324
+    When create_incident_with_invalid_parameters                                                                                               # features/steps/steps.py:274
+    Then errorCreateIncident                                                                                                                   # features/steps/steps.py:353
 
-  Scenario: initialize_not_empty_list view_incident_details  # features/InstatusEdgePairV2.feature:159
-    Given initialize_not_empty_list                          # features/steps/steps.py:80
-    When view_incident_details                               # features/steps/steps.py:200
-    Then incidentActiveSuccess                               # features/steps/steps.py:342
+  Scenario: initialize_not_empty_list delete_a_incident_from_list  # features/InstatusEdgePairV2.feature:165
+    Given initialize_not_empty_list                                # features/steps/steps.py:79
+    When delete_a_incident_from_list                               # features/steps/steps.py:222
+    Then deleteSuccess                                             # features/steps/steps.py:335
 
-  Scenario: initialize_not_empty_list create_new_incident view_created_incident_details  # features/InstatusEdgePairV2.feature:166
-    Given initialize_not_empty_list                                                      # features/steps/steps.py:80
-    When create_new_incident                                                             # features/steps/steps.py:262
-    Then creationSuccess                                                                 # features/steps/steps.py:354
-    When view_created_incident_details                                                   # features/steps/steps.py:176
-    Then incidentActiveSuccess                                                           # features/steps/steps.py:342
+  Scenario: initialize_not_empty_list view_incident_details  # features/InstatusEdgePairV2.feature:172
+    Given initialize_not_empty_list                          # features/steps/steps.py:79
+    When view_incident_details                               # features/steps/steps.py:199
+    Then incidentActiveSuccess                               # features/steps/steps.py:329
 
-  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details  # features/InstatusEdgePairV2.feature:175
-    Given initialize_not_empty_list                                                                           # features/steps/steps.py:80
-    When view_incident_details                                                                                # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                # features/steps/steps.py:342
-    When update_an_incident                                                                                   # features/steps/steps.py:288
-    Then updateSuccess                                                                                        # features/steps/steps.py:360
-    When view_updated_incident_details                                                                        # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                # features/steps/steps.py:342
+  Scenario: initialize_not_empty_list create_new_incident view_created_incident_details  # features/InstatusEdgePairV2.feature:179
+    Given initialize_not_empty_list                                                      # features/steps/steps.py:79
+      Traceback (most recent call last):
+        File "/home/leokoike/.pyenv/versions/3.10.7/envs/tcc/lib/python3.10/site-packages/behave/model.py", line 1329, in run
+          match.run(runner.context)
+        File "/home/leokoike/.pyenv/versions/3.10.7/envs/tcc/lib/python3.10/site-packages/behave/matchers.py", line 98, in run
+          self.func(context, *args, **kwargs)
+        File "features/steps/steps.py", line 82, in step_given_init_not_empty
+          assert resposta.status_code == 200
+      AssertionError
 
-  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details update_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:186
-    Given initialize_not_empty_list                                                                                                                   # features/steps/steps.py:80
-    When view_incident_details                                                                                                                        # features/steps/steps.py:200
-    Then incidentActiveSuccess                                                                                                                        # features/steps/steps.py:342
-    When update_an_incident                                                                                                                           # features/steps/steps.py:288
-    Then updateSuccess                                                                                                                                # features/steps/steps.py:360
-    When view_updated_incident_details                                                                                                                # features/steps/steps.py:188
-    Then incidentActiveSuccess                                                                                                                        # features/steps/steps.py:342
-    When update_incident_with_invalid_parameters                                                                                                      # features/steps/steps.py:304
-    Then errorUpdateIncident                                                                                                                          # features/steps/steps.py:371
+    When create_new_incident                                                             # None
+    Then creationSuccess                                                                 # None
+    When view_created_incident_details                                                   # None
+    Then incidentActiveSuccess                                                           # None
 
-  Scenario: initialize_empty_list create_new_incident  # features/InstatusEdgePairV2.feature:199
-    Given initialize_empty_list                        # features/steps/steps.py:101
-    When create_new_incident                           # features/steps/steps.py:262
-    Then creationSuccess                               # features/steps/steps.py:354
+  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details  # features/InstatusEdgePairV2.feature:188
+    Given initialize_not_empty_list                                                                           # features/steps/steps.py:79
+    When view_incident_details                                                                                # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                # features/steps/steps.py:329
+    When update_an_incident                                                                                   # features/steps/steps.py:287
+    Then updateSuccess                                                                                        # features/steps/steps.py:347
+    When view_updated_incident_details                                                                        # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                # features/steps/steps.py:329
 
-  Scenario: initialize_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:206
-    Given initialize_empty_list                                            # features/steps/steps.py:101
-    When create_incident_with_invalid_parameters                           # features/steps/steps.py:275
-    Then errorCreateIncident                                               # features/steps/steps.py:366
+  Scenario: initialize_not_empty_list view_incident_details update_an_incident view_updated_incident_details update_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:199
+    Given initialize_not_empty_list                                                                                                                   # features/steps/steps.py:79
+    When view_incident_details                                                                                                                        # features/steps/steps.py:199
+    Then incidentActiveSuccess                                                                                                                        # features/steps/steps.py:329
+    When update_an_incident                                                                                                                           # features/steps/steps.py:287
+    Then updateSuccess                                                                                                                                # features/steps/steps.py:347
+    When view_updated_incident_details                                                                                                                # features/steps/steps.py:187
+    Then incidentActiveSuccess                                                                                                                        # features/steps/steps.py:329
+    When update_incident_with_invalid_parameters                                                                                                      # features/steps/steps.py:303
+    Then errorUpdateIncident                                                                                                                          # features/steps/steps.py:358
 
-  Scenario: initialize_not_empty_list view_inexistent_incident  # features/InstatusEdgePairV2.feature:213
-    Given initialize_not_empty_list                             # features/steps/steps.py:80
-    When view_inexistent_incident                               # features/steps/steps.py:215
-    Then notFoundIncident                                       # features/steps/steps.py:376
+  Scenario: initialize_empty_list create_new_incident  # features/InstatusEdgePairV2.feature:212
+    Given initialize_empty_list                        # features/steps/steps.py:100
+    When create_new_incident                           # features/steps/steps.py:261
+    Then creationSuccess                               # features/steps/steps.py:341
 
-  Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:220
-    Given initialize_not_empty_list                                            # features/steps/steps.py:80
-    When create_incident_with_invalid_parameters                               # features/steps/steps.py:275
-    Then errorCreateIncident                                                   # features/steps/steps.py:366
+  Scenario: initialize_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:219
+    Given initialize_empty_list                                            # features/steps/steps.py:100
+    When create_incident_with_invalid_parameters                           # features/steps/steps.py:274
+    Then errorCreateIncident                                               # features/steps/steps.py:353
 
-1 feature passed, 0 failed, 0 skipped
-18 scenarios passed, 0 failed, 0 skipped
-152 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 2m54.444s
+  Scenario: initialize_not_empty_list view_inexistent_incident  # features/InstatusEdgePairV2.feature:226
+    Given initialize_not_empty_list                             # features/steps/steps.py:79
+    When view_inexistent_incident                               # features/steps/steps.py:214
+    Then notFoundIncident                                       # features/steps/steps.py:368
+
+  Scenario: initialize_not_empty_list delete_inexistent_incident  # features/InstatusEdgePairV2.feature:233
+    Given initialize_not_empty_list                               # features/steps/steps.py:79
+    When delete_inexistent_incident                               # features/steps/steps.py:251
+    Then errorDeleteIncident                                      # features/steps/steps.py:363
+
+  Scenario: initialize_not_empty_list create_incident_with_invalid_parameters  # features/InstatusEdgePairV2.feature:240
+    Given initialize_not_empty_list                                            # features/steps/steps.py:79
+    When create_incident_with_invalid_parameters                               # features/steps/steps.py:274
+    Then errorCreateIncident                                                   # features/steps/steps.py:353
+
+
+Failing scenarios:
+  features/InstatusEdgePairV2.feature:179  initialize_not_empty_list create_new_incident view_created_incident_details
+
+0 features passed, 1 failed, 0 skipped
+19 scenarios passed, 1 failed, 0 skipped
+159 steps passed, 1 failed, 4 skipped, 0 undefined
+Took 4m34.306s

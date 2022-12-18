@@ -11,7 +11,6 @@ GET_ALL = 1  # guarda a lista de incidents
 GET_ONE = 2  # guarda um incident recuperado
 SAVE = 3  # guarda o incident que foi atualizado/criado
 DELETE = 4  # guarda o incident que foi deletado
-ERROR = 5  # guarda os dados de erro
 
 STATUS = 1  # status code da request
 JSON = 2  # corpo da resposta
@@ -217,7 +216,7 @@ def step_when_view_incident(context):
     incident_id = "teste"
     resposta = context.session.get(f"{API_URL}/incidents/{incident_id}", headers=AUTH)
     assert resposta.status_code == 500
-    context.response[ERROR] = {STATUS: resposta.status_code}
+    context.response[GET_ONE] = {STATUS: resposta.status_code}
 
 
 @when("delete_a_incident_from_list")
@@ -256,7 +255,7 @@ def step_when_error_delete(context):
         f"{API_URL}/incidents/{incident_id}", headers=AUTH
     )
     assert resposta.status_code == 500
-    context.response[ERROR] = {STATUS: resposta.status_code}
+    context.response[DELETE] = {STATUS: resposta.status_code}
 
 
 @when("create_new_incident")
@@ -317,18 +316,6 @@ def step_when_error_update(context):
     }
 
 
-@when("update_inexistent_incident")
-def step_when_error_update_not_found(context):
-    incident_id = "teste"
-    data = generate_put_random_data()
-
-    resposta = context.session.put(
-        f"{API_URL}/incidents/{incident_id}", headers=AUTH, json=data
-    )
-    assert resposta.status_code == 500
-    context.response[ERROR] = {STATUS: resposta.status_code}
-
-
 @then("verifyNotEmptyList")
 def step_then_not_empty_list(context):
     assert context.response[GET_ALL][VAR] != 0
@@ -373,6 +360,11 @@ def step_then_error_update(context):
     assert context.response[SAVE][STATUS] == 500
 
 
+@then("errorDeleteIncident")
+def step_then_error_delete(context):
+    assert context.response[DELETE][STATUS] == 500
+
+
 @then("notFoundIncident")
 def step_then_incident_not_found(context):
-    assert context.response[ERROR][STATUS] == 500
+    assert context.response[GET_ONE][STATUS] == 500

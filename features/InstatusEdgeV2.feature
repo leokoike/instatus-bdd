@@ -9,6 +9,13 @@ When update_incident_with_invalid_parameters
 Then errorUpdateIncident
 
 
+Scenario: initialize_not_empty_list delete_inexistent_incident  
+
+Given initialize_not_empty_list
+When delete_inexistent_incident
+Then errorDeleteIncident
+
+
 Scenario: initialize_not_empty_list view_inexistent_incident  
 
 Given initialize_not_empty_list
